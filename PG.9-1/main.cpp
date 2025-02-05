@@ -49,10 +49,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		if (bullet != nullptr) {
 			bullet->Update();
 			for (int i = 0; i < 2; i++) {
-				if (Enemy::isAlive_ &&
-					bullet->GetPosX() > enemies[i]->GetPosX() && bullet->GetPosX() < enemies[i]->GetPosX() + 50 &&
+				if (bullet->GetPosX() > enemies[i]->GetPosX() && bullet->GetPosX() < enemies[i]->GetPosX() + 50 &&
 					bullet->GetPosY() > enemies[i]->GetPosY() && bullet->GetPosY() < enemies[i]->GetPosY() + 50) {
-					delete enemies[i];
+					Enemy::isAlive_ = false;
 				}
 			}
 			if (bullet->GetPosY() < 0) {
@@ -64,7 +63,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			enemies[i]->Update();
 		}
 		ball->Update(keys);
-
 	
 
 		///
